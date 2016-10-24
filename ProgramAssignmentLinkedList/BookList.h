@@ -35,7 +35,7 @@ public:
 	// Lexicographical order of book titles 
 	void print();
 
-//private:
+private:
 	Book* first; // pointer to first node
 	Book* last; // pointer to last node 
 	int count; // total number of books in stock 

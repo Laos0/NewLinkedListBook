@@ -75,5 +75,12 @@ void BookList::remove(string t) {
 }
 
 void BookList::print() {
+	Book* currentBook = first;
+
+	do {
+		currentBook = currentBook->next;
+		cout << "Hello" << endl;
+
+	} while (currentBook->next != NULL);
 
 }

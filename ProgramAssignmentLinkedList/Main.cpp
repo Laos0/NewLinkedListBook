@@ -12,12 +12,15 @@ int main() {
 	list.insert("Frog", 3, 6.00);
 	//list.search("GOOO");
 
-	cout << list.first->next->title << endl;
+	/*cout << list.first->next->title << endl;
 	cout << list.first->title << endl;
 	cout << list.last->title << endl;
 	cout << list.last->title << endl;
+	*/
 
 	list.search("Snake");
+	list.search("Monster");
+	list.print();
 	
 
 	system("pause");
