@@ -3,7 +3,7 @@
 
 
 BookList::BookList() {
-
+	count = 0;
 }
 
 BookList::~BookList() {
@@ -53,12 +53,12 @@ void BookList::search(string t) {
 		else {
 			Book* temp = new Book;
 			temp->next = NULL;
-			temp = NULL; 
 			temp->title = t;
 			temp->price = p;
 			temp->quantity = q;
 			last->next = temp;
 			last = temp;
+			temp = NULL;
 		}
 
 
