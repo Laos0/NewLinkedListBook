@@ -21,13 +21,14 @@ void BookList::search(string t) {
 
 		}
 		else {
-			cout << " Book cannot be found! " << endl;
 			currentBook = currentBook->next;
 		}
 
 
-	} while (currentBook->next != NULL);
-
+	} while (isFound == false && currentBook->next !=NULL);
+	if (!isFound) {
+		cout << "book not found" << endl;
+	}
 	//cout << first->next->title << endl;
 
 }
