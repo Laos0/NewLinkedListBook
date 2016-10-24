@@ -1,6 +1,8 @@
 #include "BookList.h"
 #include "Book.h"
+#include <vector>
 
+vector<Book>books(15);
 
 BookList::BookList() {
 	count = 0;
@@ -72,6 +74,7 @@ void BookList::search(string t) {
 
 void BookList::remove(string t) {
 
+
 }
 
 void BookList::print() {
@@ -79,8 +82,12 @@ void BookList::print() {
 
 	do {
 		currentBook = currentBook->next;
-		cout << "Hello" << endl;
+		cout << currentBook->title << endl;
 
 	} while (currentBook->next != NULL);
+
+}
+
+void BookList::sort() {
 
 }

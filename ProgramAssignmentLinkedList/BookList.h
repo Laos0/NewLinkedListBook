@@ -35,6 +35,9 @@ public:
 	// Lexicographical order of book titles 
 	void print();
 
+	// Replacement for Lexicorgraphical order, 
+	void sort();
+
 private:
 	Book* first; // pointer to first node
 	Book* last; // pointer to last node 
