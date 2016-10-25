@@ -1,8 +1,10 @@
 #include "BookList.h"
 #include "Book.h"
 #include <vector>
+#include <algorithm>
+#include <iterator>
 
-vector<Book>books(15);
+
 
 BookList::BookList() {
 	count = 0;
@@ -37,6 +39,9 @@ void BookList::search(string t) {
 
 	void BookList::insert(string t, int q, double p) {
 
+		Book* b = new Book;
+		b->title = "My Book 1";
+		books.push_back(b);
 
 		if (count < 1) {
 			first = new Book;

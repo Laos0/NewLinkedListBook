@@ -2,16 +2,23 @@
 #define BOOKLIST_H
 #include<iostream>
 #include "Book.h"
+#include <algorithm>
+#include <iterator>
+#include <vector>
 
 using namespace std;
 
 class BookList {
 public:
+
 	// Constructors
 	BookList();
 
 	// Destructor 
 	~BookList();
+
+	// VECTOR 
+	vector<Book*>books;
 
 	// Search for the book with the given title t 
 	// If the book is found, print its title

@@ -1,16 +1,36 @@
 #include "Book.h"
 #include "BookList.h"
 #include <vector>
+#include <algorithm>
+#include <iterator>
+
 
 int main() {
 
-	vector<string>randomString = { "Doggy","cat", "To", "my", "house" };
+	vector<Book*>books;
+
+	Book* b = new Book;
+	b->title = "My Book 1";
+	books.push_back(b);
+
+	b = new Book;
+	b->title = "My Book 2";
+	books.push_back(b);
+
+	b = new Book;
+	b->title = "My Book 3";
+	books.push_back(b);
+
+	cout << books[1]->title << endl;
+
+	
+
+	/*vector<string>randomString = { "Doggy","cat", "To", "my", "house" };
 	
 	for (int i = 0; i < randomString.size(); i++) {
 
 		cout << randomString[i] << endl;
 	}
-
 	vector<string>secondRandomStr;
 	secondRandomStr.push_back("I");
 	secondRandomStr.push_back("Am");
@@ -18,7 +38,9 @@ int main() {
 	secondRandomStr.erase(secondRandomStr.begin());
 	for (int i = 0; secondRandomStr.size(); i++) {
 		cout << secondRandomStr[i] << endl;
-	}
+	}*/
+	
+
 	
 	BookList list;
 	list.insert("Cat", 3, 2.00);
@@ -36,10 +58,14 @@ int main() {
 	cout << list.last->title << endl;
 	*/
 
+	/*
 	list.search("Snake");
 	list.search("Monster");
 	list.print();
+	*/
 	
+	
+
 
 	system("pause");
 
