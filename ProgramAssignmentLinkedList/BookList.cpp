@@ -40,59 +40,131 @@ void BookList::search(string t) {
 	void BookList::insert(string t, int q, double p) {
 
 		Book* b = new Book;
-		b->title = "My Book 1";
-		books.push_back(b);
+		b->title = t;
+		b->price = p;
+		b->quantity = q;
+		b->next = NULL;
+		count += b->quantity;
+		
+		
 
-		if (count < 1) {
-			first = new Book;
-			first->title = t;
-			first->price = p;
-			first-> next = NULL;
-			first->quantity = q;
-		}
-		else if (count == 1) {
-			last = new Book;
-			last->title = t;
-			last->next = NULL;
-			last->price = p;
-			last->quantity = q;
-			first->next = last;
+		if (insertCounter > 0) {
+			bool myResult = doesExist(b);
+			
+			if (myResult == false) {
+				books.push_back(b);
+			}
+			else {
+				updateBookQuantity(b);
+			}
 		}
 		else {
-			Book* temp = new Book;
-			temp->next = NULL;
-			temp->title = t;
-			temp->price = p;
-			temp->quantity = q;
-			last->next = temp;
-			last = temp;
-			temp = NULL;
+			books.push_back(b);
 		}
 
 
 
-		count++;
+		// IF this is first book then do this
+		if (insertCounter < 1) {
+			first = b;
+		}
+		else if (insertCounter == 1) {
+			first->next = b;
+			last = b;
+			
+		}
+		else {
+			last->next = b;
+			last = b;
+
+		}
+
+
+
+		insertCounter++;
 
 
 	}
 
 
 void BookList::remove(string t) {
+	int index = NULL;
+	bool isFound = false;
 
+	for (int i = 0; i < books.size(); i++) {
+		if (books[i]->title.compare(t) == 0) {
+			index = i;
+			isFound = true;
+			break;
+		}
+	}
 
-}
+	
+	if (isFound) {
+		// Reassign the next previous or next pointer
+		if (index > 0 || index != books.size()) {
+			books[index - 1]->next = books[index + 1];
+		}
+		else if (index == books.size()) {
+			books[index - 1]->next = NULL;
+			last = books[index - 1];
+		}
+		else if (index == 0) {
+			if (books[index]->next != NULL) {
+				first = books[index + 1];
+			}
+		}
+
+		// Delete the book from booklist
+		books.erase(books.begin() + index);
+	}
+	else {
+		cout << "Book is not found. " << endl;
+	}
+} 
 
 void BookList::print() {
-	Book* currentBook = first;
+
+	for (int i = 0; i < books.size(); i++) {
+		cout << "Title: " << books[i]->title << ", Quantity: " << books[i]->quantity << ", Price: " << books[i]->price << endl;
+	}
+	
+	
+	/*Book* currentBook = first;
 
 	do {
 		currentBook = currentBook->next;
 		cout << currentBook->title << endl;
 
 	} while (currentBook->next != NULL);
+	*/
 
 }
 
 void BookList::sort() {
 
 }
+
+bool BookList::doesExist(Book* searchedBook) {
+
+	for (int i = 0; i < books.size(); i++) {
+		if (books[i]->title.compare(searchedBook->title) == 0) {
+
+			return true;
+		}
+
+	}
+	return false;
+}
+
+void BookList::updateBookQuantity(Book* t) {
+
+	for (int i = 0; i < books.size(); i++) {
+		if (books[i]->title.compare(t->title) == 0) {
+			books[i]->quantity += t->quantity;
+			books[i]->price = t->price;
+			break;
+		}
+	}
+}
+

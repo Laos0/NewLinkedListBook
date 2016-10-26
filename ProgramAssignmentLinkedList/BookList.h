@@ -45,11 +45,18 @@ public:
 	// Replacement for Lexicorgraphical order, 
 	void sort();
 
+	// 
+	bool doesExist(Book* t);
+
+	void updateBookQuantity(Book* t);
+
+	
+
 private:
 	Book* first; // pointer to first node
 	Book* last; // pointer to last node 
 	int count; // total number of books in stock 
-
+	int insertCounter;
 
 };
 
