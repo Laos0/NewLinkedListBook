@@ -46,7 +46,7 @@ public:
 	void sort();
 
 	// 
-	bool doesExist(Book* t);
+	bool doesExist(Book* t, bool doPrint);
 
 	void updateBookQuantity(Book* t);
 

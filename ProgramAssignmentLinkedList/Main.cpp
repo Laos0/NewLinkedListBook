@@ -37,10 +37,12 @@ int main() {
 	
 	BookList list;
 
-	/*list.insert("Rat", 3, 6.00);
+	list.insert("Rat", 3, 6.00);
 	list.insert("Snake", 5, 4.00);
 	list.insert("Crane", 4, 2.00);
-	*/
+	//list.remove("Crane");
+	list.print();
+	
 
 
 	int userSelection = 0;
@@ -72,9 +74,23 @@ int main() {
 				else {
 					cout << "Book is not valid." << endl;
 				}
+				/*userTitle = "";
+				userQuantity = NULL;
+				userPrice = NULL;
+				*/
 			}
 			else if (userSelection == 2) {
 				cout << "Deleting..." << endl;
+				cout << "Enter the book title to delete." << endl;
+				string userTitle2;
+				cin >> userTitle2;
+				if (!userTitle2.empty()) {
+					list.remove(userTitle2);
+				}
+				else {
+					cout << "Invalid title." << endl;
+				}
+
 			}
 			else if (userSelection == 3) {
 				cout << "Printing..." << endl;
@@ -82,6 +98,15 @@ int main() {
 			}
 			else if (userSelection == 4) {
 				cout << "Searching..." << endl;
+				cout << "Type title to search" << endl;
+				string userTitle3;
+				cin >> userTitle3;
+				if (!userTitle3.empty()) {
+					list.search(userTitle3);
+				}
+				else {
+					cout << "Invalid search." << endl;
+				}
 			}
 			cout << "-----------------------------------------------------------" << endl;
 
